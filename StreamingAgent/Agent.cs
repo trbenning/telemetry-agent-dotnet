@@ -121,7 +121,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent
 
         private async Task RunEventProcessorAsync()
         {
-            switch (this.config.IoTHubConfig.CheckpointingConfig.StorageConfig.BackendType)
+            switch (config.IoTHubConfig.CheckpointingConfig.StorageConfig.BackendType)
             {
                 case "AzureBlob":
                     await RegisterEventProcessorFactoryWithBlobCheckpointingAsync();
@@ -129,8 +129,8 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent
 
                 default:
                     // ToDo: support other checkpoints via ICheckpointManager & ILeaseManager
-                    this.logger.Error("Unexpected checkpointing backend storage", () => new { this.config.IoTHubConfig.CheckpointingConfig.StorageConfig.BackendType });
-                    break;
+                    logger.Error("Unexpected checkpointing backend storage", () => new { config.IoTHubConfig.CheckpointingConfig.StorageConfig.BackendType });
+                    throw new InvalidConfigurationException("Checkpointing backend storage must be Azure Blob.");
             }
         }
 

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.Services
         public const string RuleSeverityKey = "rule.severity";
         public const string RuleDescriptionKey = "rule.description";
 
-        // TODO: https://github.com/Azure/iot-stream-analytics-java/issues/34
+        // TODO: https://github.com/Azure/telemetry-agent-java/issues/34
         public const string NewAlarmStatus = "open";
 
         public const string LogicKey = "logic";

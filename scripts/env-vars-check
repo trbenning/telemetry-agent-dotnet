@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-if [[ -z "$PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING" ]]; then
-    echo "Error: the PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING environment variable is not defined."
+if [[ -z "$PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING" ]]; then
+    echo "Error: the PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING environment variable is not defined."
     exit -1
 fi
 
-if [[ -z "$PCS_DEVICETELEMETRY_WEBSERVICE_URL" ]]; then
-    echo "Error: the PCS_DEVICETELEMETRY_WEBSERVICE_URL environment variable is not defined."
+if [[ -z "$PCS_TELEMETRY_WEBSERVICE_URL" ]]; then
+    echo "Error: the PCS_TELEMETRY_WEBSERVICE_URL environment variable is not defined."
     exit -1
 fi
 
-if [[ -z "$PCS_UICONFIG_WEBSERVICE_URL" ]]; then
-    echo "Error: the PCS_UICONFIG_WEBSERVICE_URL environment variable is not defined."
+if [[ -z "$PCS_CONFIG_WEBSERVICE_URL" ]]; then
+    echo "Error: the PCS_CONFIG_WEBSERVICE_URL environment variable is not defined."
     exit -1
 fi
 

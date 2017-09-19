@@ -10,14 +10,14 @@
 version: "3"
 
 services:
-  streamanalytics:
-    image: azureiotpcs/iot-stream-analytics-dotnet:0.x.y
+  telemetryagent:
+    image: azureiotpcs/telemetry-agent-dotnet:0.x.y
     ports:
       - "9023:9023"
     environment:
-      - PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING
-      - PCS_DEVICETELEMETRY_WEBSERVICE_URL
-      - PCS_UICONFIG_WEBSERVICE_URL
+      - PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING
+      - PCS_TELEMETRY_WEBSERVICE_URL
+      - PCS_CONFIG_WEBSERVICE_URL
       - PCS_IOTHUBMANAGER_WEBSERVICE_URL
       - PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT
       - PCS_IOTHUBREACT_AZUREBLOB_KEY

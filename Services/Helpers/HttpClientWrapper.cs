@@ -37,7 +37,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.Services.Helpers
             request.SetUriFromString(uri);
             request.Headers.Add("Accept", "application/json");
             request.Headers.Add("Cache-Control", "no-cache");
-            request.Headers.Add("User-Agent", "IoT Stream Analytics");
+            request.Headers.Add("User-Agent", "Telemetry Agent");
 
             IHttpResponse response;
 

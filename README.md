@@ -2,8 +2,8 @@
 [![Issues][issues-badge]][issues-url]
 [![Gitter][gitter-badge]][gitter-url]
 
-IOT STREAM ANALYTICS
-=================
+Telemetry Agent
+===============
 
 ... project description ...
 
@@ -42,9 +42,9 @@ Other documents
 * [Contributing and Development setup](CONTRIBUTING.md)
 * [Development setup, scripts and tools](DEVELOPMENT.md)
 
-[build-badge]: https://img.shields.io/travis/Azure/iot-stream-analytics-dotnet.svg
-[build-url]: https://travis-ci.org/Azure/iot-stream-analytics-dotnet
-[issues-badge]: https://img.shields.io/github/issues/azure/iot-stream-analytics-dotnet.svg
-[issues-url]: https://github.com/azure/iot-stream-analytics-dotnet/issues
+[build-badge]: https://img.shields.io/travis/Azure/telemetry-agent-dotnet.svg
+[build-url]: https://travis-ci.org/Azure/telemetry-agent-dotnet
+[issues-badge]: https://img.shields.io/github/issues/azure/telemetry-agent-dotnet.svg
+[issues-url]: https://github.com/azure/telemetry-agent-dotnet/issues
 [gitter-badge]: https://img.shields.io/gitter/room/azure/iot-pcs.js.svg
 [gitter-url]: https://gitter.im/azure/iot-pcs

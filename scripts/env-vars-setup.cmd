@@ -1,13 +1,13 @@
 :: Prepare the environment variables used by the application.
 
 :: Connection string of the DocumentDb instance where telemetry is stored
-SETX PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING "..."
+SETX PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING "..."
 
-:: URL of the device telemetry web service
-SETX PCS_DEVICETELEMETRY_WEBSERVICE_URL "..."
+:: URL of the telemetry web service
+SETX PCS_TELEMETRY_WEBSERVICE_URL "..."
 
-:: URL of the UI config web service
-SETX PCS_UICONFIG_WEBSERVICE_URL "..."
+:: URL of the config web service
+SETX PCS_CONFIG_WEBSERVICE_URL "..."
 
 :: URL of the IoT Hub manager web service
 SETX PCS_IOTHUBMANAGER_WEBSERVICE_URL "..."

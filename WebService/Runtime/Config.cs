@@ -12,7 +12,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.WebService.Runtime
     /// <summary>Web service configuration</summary>
     public class Config : IConfig
     {
-        private const string ApplicationKey = "streamanalytics:";
+        private const string ApplicationKey = "telemetryagent:";
         private const string PortKey = ApplicationKey + "webservice_port";
 
         /// <summary>Web service listening port</summary>

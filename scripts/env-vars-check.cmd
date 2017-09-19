@@ -1,17 +1,17 @@
 @ECHO off & setlocal enableextensions enabledelayedexpansion
 
-IF "%PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING%" == "" (
-    echo Error: the PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING environment variable is not defined.
+IF "%PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING%" == "" (
+    echo Error: the PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING environment variable is not defined.
     exit /B 1
 )
 
-IF "%PCS_DEVICETELEMETRY_WEBSERVICE_URL%" == "" (
-    echo Error: the PCS_DEVICETELEMETRY_WEBSERVICE_URL environment variable is not defined.
+IF "%PCS_TELEMETRY_WEBSERVICE_URL%" == "" (
+    echo Error: the PCS_TELEMETRY_WEBSERVICE_URL environment variable is not defined.
     exit /B 1
 )
 
-IF "%PCS_UICONFIG_WEBSERVICE_URL%" == "" (
-    echo Error: the PCS_UICONFIG_WEBSERVICE_URL environment variable is not defined.
+IF "%PCS_CONFIG_WEBSERVICE_URL%" == "" (
+    echo Error: the PCS_CONFIG_WEBSERVICE_URL environment variable is not defined.
     exit /B 1
 )
 

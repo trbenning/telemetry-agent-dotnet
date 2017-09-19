@@ -1,7 +1,7 @@
 @ECHO off & setlocal enableextensions enabledelayedexpansion
 
 :: Note: use lowercase names for the Docker images
-SET DOCKER_IMAGE="azureiotpcs/iot-stream-analytics-dotnet"
+SET DOCKER_IMAGE="azureiotpcs/telemetry-agent-dotnet"
 
 :: strlen("\scripts\docker\") => 16
 SET APP_HOME=%~dp0
@@ -22,11 +22,11 @@ IF %ERRORLEVEL% NEQ 0 GOTO FAIL
 :: Start the application
 :: Some settings are used to connect to an external dependency, e.g. Azure IoT Hub and IoT Hub Manager API
 :: Depending on which settings and which dependencies are needed, edit the list of variables
-echo Starting IoT Stream Analytics...
+echo Starting Telemetry Agent...
 docker run -it -p 9023:9023 ^
-    -e PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING=%PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING% ^
-    -e PCS_DEVICETELEMETRY_WEBSERVICE_URL=%PCS_DEVICETELEMETRY_WEBSERVICE_URL% ^
-    -e PCS_UICONFIG_WEBSERVICE_URL=%PCS_UICONFIG_WEBSERVICE_URL% ^
+    -e PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING=%PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING% ^
+    -e PCS_TELEMETRY_WEBSERVICE_URL=%PCS_TELEMETRY_WEBSERVICE_URL% ^
+    -e PCS_CONFIG_WEBSERVICE_URL=%PCS_CONFIG_WEBSERVICE_URL% ^
     -e PCS_IOTHUBMANAGER_WEBSERVICE_URL=%PCS_IOTHUBMANAGER_WEBSERVICE_URL% ^
     -e PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT=%PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT% ^
     -e PCS_IOTHUBREACT_AZUREBLOB_KEY=%PCS_IOTHUBREACT_AZUREBLOB_KEY% ^

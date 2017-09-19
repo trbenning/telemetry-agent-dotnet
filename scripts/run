@@ -38,19 +38,19 @@ prepare_for_run() {
 }
 
 run_all() {
-    echo "Starting IoT Stream Analytics agent and web service..."
+    echo "Starting Telemetry Agent and web service..."
     dotnet run --configuration $CONFIGURATION --project WebService/*.csproj & \
         dotnet run --configuration $CONFIGURATION --project StreamingAgent/*.csproj && \
         fg
 }
 
 run_webservice() {
-    echo "Starting IoT Stream Analytics web service..."
+    echo "Starting Telemetry Agent web service..."
     dotnet run --configuration $CONFIGURATION --project WebService/*.csproj
 }
 
 run_stream() {
-    echo "Starting IoT Stream Analytics agent..."
+    echo "Starting Telemetry Agent..."
     dotnet run --configuration $CONFIGURATION --project StreamingAgent/*.csproj
 }
 
@@ -84,9 +84,9 @@ run_in_sandbox() {
         # edit the list of variables.
         docker run -it \
             -p 9023:9023 \
-            -e "PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING=$PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING" \
-            -e "PCS_DEVICETELEMETRY_WEBSERVICE_URL=$PCS_DEVICETELEMETRY_WEBSERVICE_URL" \
-            -e "PCS_UICONFIG_WEBSERVICE_URL=$PCS_UICONFIG_WEBSERVICE_URL" \
+            -e "PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING=$PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING" \
+            -e "PCS_TELEMETRY_WEBSERVICE_URL=$PCS_TELEMETRY_WEBSERVICE_URL" \
+            -e "PCS_CONFIG_WEBSERVICE_URL=$PCS_CONFIG_WEBSERVICE_URL" \
             -e "PCS_IOTHUBMANAGER_WEBSERVICE_URL=$PCS_IOTHUBMANAGER_WEBSERVICE_URL" \
             -e "PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT=$PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT" \
             -e "PCS_IOTHUBREACT_AZUREBLOB_KEY=$PCS_IOTHUBREACT_AZUREBLOB_KEY" \

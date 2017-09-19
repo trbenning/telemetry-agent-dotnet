@@ -75,7 +75,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.Services.Helpers
                     // or stop processing the following messages. The current behavior
                     // of logging the error and moving on, means that in case of
                     // error, the message has not been stored.
-                    // see https://github.com/Azure/iot-stream-analytics-java/issues/35
+                    // see https://github.com/Azure/telemetry-agent-java/issues/35
                 }
             }
         }

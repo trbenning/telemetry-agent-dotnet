@@ -109,7 +109,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.Services
         private async Task LoadAllRulesAsync()
         {
             logger.Debug("Loading rules...", () => { });
-            IEnumerable<RuleApiModel> result = null;
+            IEnumerable<RuleApiModel> result = new RuleApiModel[] { };
 
             try
             {

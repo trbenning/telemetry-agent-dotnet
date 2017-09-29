@@ -60,5 +60,5 @@ Please enter issues, bugs, or suggestions as GitHub Issues [here](https://github
 [build-url]: https://travis-ci.org/Azure/telemetry-agent-dotnet
 [issues-badge]: https://img.shields.io/github/issues/azure/telemetry-agent-dotnet.svg
 [issues-url]: https://github.com/azure/telemetry-agent-dotnet/issues
-[gitter-badge]: https://img.shields.io/gitter/room/azure/iot-pcs.js.svg
-[gitter-url]: https://gitter.im/azure/iot-pcs
+[gitter-badge]: https://img.shields.io/gitter/room/azure/iot-solutions.js.svg
+[gitter-url]: https://gitter.im/azure/iot-solutions

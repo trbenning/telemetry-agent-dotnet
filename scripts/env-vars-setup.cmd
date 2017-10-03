@@ -22,7 +22,7 @@ SETX PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX "..."
 SETX PCS_IOTHUBREACT_HUB_NAME "..."
 
 :: see: Endpoints ⇒ Messaging ⇒ Events ⇒ "Event Hub-compatible endpoint"
-:: e.g. "iothub-ns-my-test-185521-d1bf252916.servicebus.windows.net"
+:: e.g. "iothub-ns-aaa-bbb-123456-abcdefghij.servicebus.windows.net"
 SETX PCS_IOTHUBREACT_HUB_ENDPOINT "..."
 
 :: see: "IoT Hub" ⇒ your hub ⇒ "Shared access policies"

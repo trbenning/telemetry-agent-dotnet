@@ -11,7 +11,7 @@ version: "3"
 
 services:
   telemetryagent:
-    image: azureiotpcs/telemetry-agent-dotnet:0.x.y
+    image: azureiotpcs/telemetry-agent-dotnet:testing
     ports:
       - "9023:9023"
     environment:

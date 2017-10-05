@@ -1,37 +1,29 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -e
 
 # Note: use lowercase names for the Docker images
 DOCKER_IMAGE="azureiotpcs/telemetry-agent-dotnet"
 
-set -e
 APP_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && cd .. && pwd )/"
 source "$APP_HOME/scripts/.functions.sh"
-
-# The version is stored in a file, to avoid hardcoding it in multiple places
-APP_VERSION=$(cat "$APP_HOME/version")
 
 run_container() {
     check_dependency_docker
 
     $APP_HOME/scripts/env-vars-check
 
-    # Some settings are used to connect to an external dependency, e.g. Azure IoT Hub and IoT Hub Manager API
-    # Depending on which settings and which dependencies are needed, edit the list of variables
     echo "Starting Telemetry Agent..."
     docker run -it -p 9023:9023 \
-        -e "PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING=$PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING" \
-        -e "PCS_TELEMETRY_WEBSERVICE_URL=$PCS_TELEMETRY_WEBSERVICE_URL" \
-        -e "PCS_CONFIG_WEBSERVICE_URL=$PCS_CONFIG_WEBSERVICE_URL" \
-        -e "PCS_IOTHUBMANAGER_WEBSERVICE_URL=$PCS_IOTHUBMANAGER_WEBSERVICE_URL" \
-        -e "PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT=$PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT" \
-        -e "PCS_IOTHUBREACT_AZUREBLOB_KEY=$PCS_IOTHUBREACT_AZUREBLOB_KEY" \
-        -e "PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX=$PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX" \
-        -e "PCS_IOTHUBREACT_HUB_NAME=$PCS_IOTHUBREACT_HUB_NAME" \
-        -e "PCS_IOTHUBREACT_HUB_ENDPOINT=$PCS_IOTHUBREACT_HUB_ENDPOINT" \
-        -e "PCS_IOTHUBREACT_ACCESS_CONNSTRING=$PCS_IOTHUBREACT_ACCESS_CONNSTRING" \
-        "$DOCKER_IMAGE:$APP_VERSION"
+        -e PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING \
+        -e PCS_TELEMETRY_WEBSERVICE_URL \
+        -e PCS_CONFIG_WEBSERVICE_URL \
+        -e PCS_IOTHUBMANAGER_WEBSERVICE_URL \
+        -e PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT \
+        -e PCS_IOTHUBREACT_AZUREBLOB_KEY \
+        -e PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX \
+        -e PCS_IOTHUBREACT_HUB_NAME \
+        -e PCS_IOTHUBREACT_HUB_ENDPOINT \
+        -e PCS_IOTHUBREACT_ACCESS_CONNSTRING \
+        "$DOCKER_IMAGE:testing"
 }
 
 run_container
-
-set +e

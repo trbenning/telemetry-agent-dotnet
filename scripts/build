@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -e
 
 # Usage:
 # Build the project in the local environment:  ./scripts/build
@@ -8,7 +8,6 @@
 # Debug|Release
 CONFIGURATION=Release
 
-set -e
 APP_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )/"
 source "$APP_HOME/scripts/.functions.sh"
 
@@ -66,16 +65,16 @@ build_in_sandbox() {
     if [[ -z "$IS_WINDOWS" ]]; then
         check_dependency_docker
         docker run -it \
-            -e "PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING=$PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING" \
-            -e "PCS_TELEMETRY_WEBSERVICE_URL=$PCS_TELEMETRY_WEBSERVICE_URL" \
-            -e "PCS_CONFIG_WEBSERVICE_URL=$PCS_CONFIG_WEBSERVICE_URL" \
-            -e "PCS_IOTHUBMANAGER_WEBSERVICE_URL=$PCS_IOTHUBMANAGER_WEBSERVICE_URL" \
-            -e "PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT=$PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT" \
-            -e "PCS_IOTHUBREACT_AZUREBLOB_KEY=$PCS_IOTHUBREACT_AZUREBLOB_KEY" \
-            -e "PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX=$PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX" \
-            -e "PCS_IOTHUBREACT_HUB_NAME=$PCS_IOTHUBREACT_HUB_NAME" \
-            -e "PCS_IOTHUBREACT_HUB_ENDPOINT=$PCS_IOTHUBREACT_HUB_ENDPOINT" \
-            -e "PCS_IOTHUBREACT_ACCESS_CONNSTRING=$PCS_IOTHUBREACT_ACCESS_CONNSTRING" \
+            -e PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING \
+            -e PCS_TELEMETRY_WEBSERVICE_URL \
+            -e PCS_CONFIG_WEBSERVICE_URL \
+            -e PCS_IOTHUBMANAGER_WEBSERVICE_URL \
+            -e PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT \
+            -e PCS_IOTHUBREACT_AZUREBLOB_KEY \
+            -e PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX \
+            -e PCS_IOTHUBREACT_HUB_NAME \
+            -e PCS_IOTHUBREACT_HUB_ENDPOINT \
+            -e PCS_IOTHUBREACT_ACCESS_CONNSTRING \
             -v "$PCS_CACHE/sandbox/.config:/root/.config" \
             -v "$PCS_CACHE/sandbox/.dotnet:/root/.dotnet" \
             -v "$PCS_CACHE/sandbox/.nuget:/root/.nuget" \

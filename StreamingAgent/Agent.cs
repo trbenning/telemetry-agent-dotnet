@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 
 using System;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices;
@@ -147,11 +148,18 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent
 
             var iotHubConnectionBuilder = IotHubConnectionStringBuilder.Create(config.IoTHubConfig.ConnectionConfig.AccessConnString);
 
-            if (!Uri.TryCreate(config.IoTHubConfig.ConnectionConfig.HubEndpoint, UriKind.Absolute, out Uri endpoint))
+            var hubEndpoint = config.IoTHubConfig.ConnectionConfig.HubEndpoint;
+            var match= Regex.Match(hubEndpoint, "^Endpoint=(?<endpoint>.*/);");
+            if (match.Success)
             {
-                if (!Uri.TryCreate($"sb://{config.IoTHubConfig.ConnectionConfig.HubEndpoint}/", UriKind.Absolute, out endpoint))
+                hubEndpoint = match.Groups["endpoint"].Value;
+            }
+
+            if (!Uri.TryCreate(hubEndpoint, UriKind.Absolute, out Uri endpoint))
+            {
+                if (!Uri.TryCreate($"sb://{hubEndpoint}/", UriKind.Absolute, out endpoint))
                 {
-                    throw new InvalidConfigurationException($"Invalid IoTHub endpoint {config.IoTHubConfig.ConnectionConfig.HubEndpoint}");
+                    throw new InvalidConfigurationException($"Invalid IoTHub endpoint {hubEndpoint}");
                 }
             }
 

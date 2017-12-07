@@ -149,7 +149,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent
             var iotHubConnectionBuilder = IotHubConnectionStringBuilder.Create(config.IoTHubConfig.ConnectionConfig.AccessConnString);
 
             var hubEndpoint = config.IoTHubConfig.ConnectionConfig.HubEndpoint;
-            var match= Regex.Match(hubEndpoint, "^Endpoint=(?<endpoint>.*/);");
+            var match = Regex.Match(hubEndpoint, "^Endpoint=(?<endpoint>.*/);");
             if (match.Success)
             {
                 hubEndpoint = match.Groups["endpoint"].Value;

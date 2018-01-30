@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService", "WebService\WebService.csproj", "{F305CAD5-BE38-4391-A692-580C526A0CB1}"
 EndProject
@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{82
 		.travis.yml = .travis.yml
 		CONTRIBUTING.md = CONTRIBUTING.md
 		DEVELOPMENT.md = DEVELOPMENT.md
-		telemetry-agent.sln.DotSettings = telemetry-agent.sln.DotSettings
 		LICENSE = LICENSE
 		README.md = README.md
+		telemetry-agent.sln.DotSettings = telemetry-agent.sln.DotSettings
 		version = version
 	EndProjectSection
 EndProject
@@ -73,7 +73,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{8BAA
 		scripts\docker\content\run.sh = scripts\docker\content\run.sh
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamingAgent", "StreamingAgent\StreamingAgent.csproj", "{F72E4985-5FF8-44EB-A600-C413AAA55DD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamingAgent", "StreamingAgent\StreamingAgent.csproj", "{F72E4985-5FF8-44EB-A600-C413AAA55DD9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamingAgent.Test", "StreamingAgent.Test\StreamingAgent.Test.csproj", "{942A8B4E-8BCF-41AD-A1EC-19B4EAA9A8F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{F72E4985-5FF8-44EB-A600-C413AAA55DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F72E4985-5FF8-44EB-A600-C413AAA55DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F72E4985-5FF8-44EB-A600-C413AAA55DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{942A8B4E-8BCF-41AD-A1EC-19B4EAA9A8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{942A8B4E-8BCF-41AD-A1EC-19B4EAA9A8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{942A8B4E-8BCF-41AD-A1EC-19B4EAA9A8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{942A8B4E-8BCF-41AD-A1EC-19B4EAA9A8F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

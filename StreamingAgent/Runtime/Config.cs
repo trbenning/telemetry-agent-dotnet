@@ -1,10 +1,13 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
+using Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.Services.Exceptions;
 using Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.Services.Runtime;
+using System;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent.Runtime
 {
-    public interface IConfig
+	public interface IConfig
     {
         /// <summary>
         /// IoTHub connection configuration
@@ -83,7 +86,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent.Runtime
                 ConnectionConfig = new ConnectionConfig
                 {
                     HubName = configData.GetString(HubNameKey),
-                    HubEndpoint = configData.GetString(HubEndpointKey),
+                    HubEndpoint = parseIoTHubEndpoint(configData.GetString(HubEndpointKey)),
                     AccessConnString = configData.GetString(AccessConnStringKey)
                 },
                 StreamingConfig = new StreamingConfig
@@ -134,6 +137,52 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent.Runtime
                     DocumentDbRUs = configData.GetInt(AlarmsDocDbRUsKey)
                 }
             };
-        }
+
+			CheckConfiguration(IoTHubConfig);
+		}
+
+		private void CheckConfiguration(IIoTHubConfig ioTHubConfig)
+		{
+			if (string.IsNullOrWhiteSpace(ioTHubConfig.ConnectionConfig.HubName))
+			{
+				throw new InvalidConfigurationException("Azure IoT Hub name not found in the configuration.");
+			}
+
+			if (string.IsNullOrWhiteSpace(ioTHubConfig.ConnectionConfig.HubEndpoint))
+			{
+				throw new InvalidConfigurationException("Azure IoT Hub endpoint not found in the configuration.");
+			}
+
+			if (string.IsNullOrWhiteSpace(ioTHubConfig.CheckpointingConfig.StorageConfig.Namespace))
+			{
+				throw new InvalidConfigurationException("Checkpointing namespace not found in the configuration.");
+			}
+
+			if (ioTHubConfig.CheckpointingConfig.StorageConfig.BackendType != "AzureBlob")
+			{
+				throw new InvalidConfigurationException("Checkpointing backend storage must be Azure Blob.");
+			}
+		}
+
+		private string parseIoTHubEndpoint(string hubEndpoint)
+		{
+			var match = Regex.Match(hubEndpoint, "^Endpoint=(?<endpoint>.*/)");
+			if (match.Success)
+			{
+				hubEndpoint = match.Groups["endpoint"].Value;
+			}
+
+			if (!Uri.TryCreate(hubEndpoint, UriKind.Absolute, out Uri endpoint))
+			{
+				if (!Uri.TryCreate($"sb://{hubEndpoint}/", UriKind.Absolute, out endpoint))
+				{
+					{
+						throw new InvalidConfigurationException($"Invalid IoTHub endpoint {hubEndpoint}");
+					}
+				}
+			}
+
+			return hubEndpoint;
+		}
     }
 }

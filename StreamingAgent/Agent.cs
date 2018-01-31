@@ -125,7 +125,7 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent
             var iotHubConnectionBuilder = IotHubConnectionStringBuilder.Create(config.IoTHubConfig.ConnectionConfig.AccessConnString);
 
             var eventHubConntionStringBuilder = new EventHubsConnectionStringBuilder(
-				new Uri(config.IoTHubConfig.ConnectionConfig.HubEndpoint),
+                new Uri(config.IoTHubConfig.ConnectionConfig.HubEndpoint),
                 config.IoTHubConfig.ConnectionConfig.HubName,
                 iotHubConnectionBuilder.SharedAccessKeyName,
                 iotHubConnectionBuilder.SharedAccessKey);

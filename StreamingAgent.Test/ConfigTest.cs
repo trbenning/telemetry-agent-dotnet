@@ -14,7 +14,7 @@ namespace StreamingAgent.Test
 		}
 
 		[Fact]
-		public async Task HubEndpointWithEndpointPrefix()
+		public async Task ParseHubEndpointWithEndpointPrefix()
 		{
 			// Arrange
 			Mock<IConfigData> configData = new Mock<IConfigData>();
@@ -32,7 +32,7 @@ namespace StreamingAgent.Test
 		}
 
 		[Fact]
-		public async Task HubEndpointWithoutEndpointPrefix()
+		public async Task ParseHubEndpointWithoutEndpointPrefix()
 		{
 			// Arrange
 			var hubEndpoint = "sb://iothub-ns-iothub-123-1232-123.servicebus.windows.net/";

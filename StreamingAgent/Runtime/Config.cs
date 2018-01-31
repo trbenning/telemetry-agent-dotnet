@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent.Runtime
 {
-	public interface IConfig
+    public interface IConfig
     {
         /// <summary>
         /// IoTHub connection configuration
@@ -138,8 +138,8 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent.Runtime
                 }
             };
 
-			CheckConfiguration(IoTHubConfig);
-		}
+	    CheckConfiguration(IoTHubConfig);
+	}
 
         private void CheckConfiguration(IIoTHubConfig ioTHubConfig)
         {
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent.Runtime
             }
         }
 
-		private string parseIoTHubEndpoint(string hubEndpoint)
-		{
+	private string parseIoTHubEndpoint(string hubEndpoint)
+	{
             var match = Regex.Match(hubEndpoint, "^Endpoint=(?<endpoint>.*/)");
             if (match.Success)
             {
@@ -174,15 +174,15 @@ namespace Microsoft.Azure.IoTSolutions.IoTStreamAnalytics.StreamingAgent.Runtime
 
             if (!Uri.TryCreate(hubEndpoint, UriKind.Absolute, out Uri endpoint))
             {
-	            if (!Uri.TryCreate($"sb://{hubEndpoint}/", UriKind.Absolute, out endpoint))
-	            {
-		            {
+	    	if (!Uri.TryCreate($"sb://{hubEndpoint}/", UriKind.Absolute, out endpoint))
+	    	{
+		    {
                         throw new InvalidConfigurationException($"Invalid IoTHub endpoint {hubEndpoint}");
-		            }
-	            }
+		    }
+	        }
             }
 
             return hubEndpoint;
-		}
+	}
     }
 }
